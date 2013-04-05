@@ -1,0 +1,38 @@
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<head>
+<script type="text/javascript "src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load('visualization', '1', {packages:['corechart']});
+	google.setOnLoadCallback(desenhaGrafico);
+	function desenhaGrafico() {
+		var dados = new google.visualization.DataTable();
+	dados.addColumn('date', 'Ano');
+	dados.addRows(4);
+	dados.addColumn('number', 'Faturamento');
+	dados.addColumn('number', 'Gastos');
+	dados.setValue(0, 0, new Date(2010, 01, 01));
+	dados.setValue(0, 1, 5);
+	dados.setValue(0, 2, 1);
+	dados.setValue(1, 0, new Date(2011, 01, 01));
+	dados.setValue(1, 1, 10);
+	dados.setValue(1, 2, 11);
+	dados.setValue(2, 0, new Date(2012, 01, 01));
+	dados.setValue(2, 1, 5);
+	dados.setValue(2, 2, 9);
+	dados.setValue(3, 0, new Date(2013, 01, 01));
+	dados.setValue(3, 1, 20);
+	dados.setValue(3, 2, 15);
+	
+	var formatter = new google.visualization.DateFormat({pattern: 'dd/MM/yyyy',});
+	formatter.format(dados, 0);
+	var div = document.getElementById('meu_grafico');
+	var grafico = new google.visualization.LineChart(div);
+	grafico.draw(dados, {width:900, height:540, title:'Faturamento da Mobili-TI'});
+}
+</script>
+</head>
+<body>
+<div id="meu_grafico" />
+</body>
+</html>
